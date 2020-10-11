@@ -7,12 +7,16 @@ class App extends React.Component {
     this.state = {
       task2: '',
       count: 0,
+      task7: '',
     }
 
     this.task1 = this.task1.bind(this);
     this.task2 = this.task2.bind(this);
     this.plusCount = this.plusCount.bind(this);
     this.ResetCount = this.ResetCount.bind(this);
+    this.task5Move = this.task5Move.bind(this);
+    this.task6 = this.task6.bind(this);
+    this.task7 = this.task7.bind(this);
   }
 
   task1() {
@@ -39,6 +43,20 @@ class App extends React.Component {
     })
   }
 
+  task5Move() {
+    console.log('move')
+  }
+
+  task6(event) {
+    console.log('***   TASK 7 ***');
+    console.log(event.target.getAttribute('data'));
+  }
+
+  task7(event) {
+    this.setState({
+      task7: event.target.value,
+    })
+  }
 
 
   render() {
@@ -73,6 +91,31 @@ class App extends React.Component {
           <h2>Task 4</h2>
           <p>Добавьте кнопку ResetCount обновляющую count в предыдущей задаче.</p>
           <button onClick={this.ResetCount}>ResetCount</button>
+        </div>
+
+        {/* task 5 */}
+        <div className="item">
+          <h2>Task 5</h2>
+          <p>Добавьте div зеленого цвета. Повесьте на него событие mousemove и при срабатывании выводите в консоль слово move.</p>
+          <div className='block-green' onMouseMove={this.task5Move}></div>
+        </div>
+
+        {/* task 6 */}
+        <div className="item">
+          <h2>Task 6</h2>
+          <p>Добавьте 2 кнопки с надписями atr1 и atr2. Задайте им атрибуты data = atr-1 и data = atr-2 соответственно. Добавьте по клику на кнопке метод (один и тот же). Метод должен выводить содержимое атрибута data в консоль.</p>
+
+          <button data='atr-1' onClick={this.task6}>atr1</button>
+          <button data='atr-2' onClick={this.task6}>atr2</button>
+        </div>
+
+        {/* task 7 */}
+        <div className="item">
+          <h2>Task 7</h2>
+          <p>Добавьте input и параграф. При вводе текста в input - выводите в параграфе вводимый текст.</p>
+
+          <input onInput={this.task7} />
+          <p>{this.state.task7}</p>
         </div>
 
 
